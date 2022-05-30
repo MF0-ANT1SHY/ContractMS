@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: k0me1jicenri1i
+Build-Jdk: Azul Zulu version 1.8.0_332
+
