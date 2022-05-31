@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>云R记</title>
+    <title>ContractMS</title>
     <link href="static/css/login.css" rel="stylesheet" type="text/css" />
     <script src="static/js/jquery-1.11.3.js" type=text/javascript></script>
     <script src="static/js/config.js" type=text/javascript></script>
@@ -13,7 +13,7 @@
 <!--head-->
 <div id="head">
     <div class="top">
-        <div class="fl yahei18">开启移动办公新时代！</div>
+        <div class="fl yahei18">CityChainofSupply</div>
     </div>
 </div>
 
@@ -33,8 +33,8 @@
                     <input type="hidden" name="actionName" value="login">
                 <%-- 取后台传过来的值   --%>
                     <span id="msg" style="color:red;font-size:12px"></span><br /><br />
-                    <input type="button" class="log jc yahei16" value="登 录" onclick="checkLogin()" />&nbsp; &nbsp; &nbsp;
-                    <input type="reset" value="取 消" class="reg jc yahei18" />
+                    <input type="button" class="log jc yahei16" value="Log in" onclick="checkLogin()" />&nbsp; &nbsp; &nbsp;
+                    <input type="reset" value="Cancel" class="reg jc yahei18" />
                 </form>
             </div>
         </div>
