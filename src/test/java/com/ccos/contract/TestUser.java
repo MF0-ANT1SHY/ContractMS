@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class TestUser {
     @Test
-    public void testQueryUserByName(){
+    public void TestQueryUserByName(){
         UserDao userDao = new UserDao();
         User user = userDao.queryUserByName("admin");
         System.out.println(user.getUpwd());

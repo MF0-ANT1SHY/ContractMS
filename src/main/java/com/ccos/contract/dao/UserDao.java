@@ -25,7 +25,7 @@ public class UserDao {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try{
-//获得数据库链接
+            //获得数据库链接
             connection = DBUtil.getConnection();
             //定义sql语句
             String sql = "select * from tb_user where uname = ?";
@@ -41,9 +41,9 @@ public class UserDao {
                 user.setUserId(resultSet.getInt("userId"));
                 user.setUname(userName);
                 user.setHead(resultSet.getString("head"));
-                user.setHead(resultSet.getString("mood"));
-                user.setHead(resultSet.getString("nick"));
-                user.setHead(resultSet.getString("upwd"));
+                user.setMood(resultSet.getString("mood"));
+                user.setNick(resultSet.getString("nick"));
+                user.setUpwd(resultSet.getString("upwd"));
             }
         }catch (Exception e){
             e.printStackTrace();
