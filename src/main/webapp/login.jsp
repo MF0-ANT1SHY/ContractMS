@@ -43,7 +43,7 @@
 
 <div id="flash">
     <div class="pos">
-        <a bgUrl="static/images/banner-bg1.jpg" id="flash1" style="display:block;"><img src="static/images/banner_pic1.png"></a>
+        <a bgUrl="static/images/banner-bg1.jpg" id="flash1" style="display:block;"><img src="static/images/banner-pic1.jpg"></a>
         <a bgUrl="static/images/banner-bg2.jpg" id="flash2"                       ><img src="static/images/banner-pic2.jpg"></a>
     </div>
     <div class="flash_bar">
@@ -55,17 +55,17 @@
 <!--bottom-->
 <div id="bottom">
     <div id="copyright">
-        <div class="quick">
-            <ul>
-                <li><input type="button" class="quickbd iphone" onclick="location.href='http://lezijie.com'" /></li>
-                <li><input type="button" class="quickbd android" onclick="location.href='http://lezijie.com'" /></li>
-                <li><input type="button" class="quickbd pc" onclick="location.href='http://lezijie.com'" /></li>
-                <div class="clr"></div>
-            </ul>
-            <div class="clr"></div>
-        </div>
+<%--        <div class="quick">--%>
+<%--            <ul>--%>
+<%--                <li><input type="button" class="quickbd iphone" onclick="location.href='http://lezijie.com'" /></li>--%>
+<%--                <li><input type="button" class="quickbd android" onclick="location.href='http://lezijie.com'" /></li>--%>
+<%--                <li><input type="button" class="quickbd pc" onclick="location.href='http://lezijie.com'" /></li>--%>
+<%--                <div class="clr"></div>--%>
+<%--            </ul>--%>
+<%--            <div class="clr"></div>--%>
+<%--        </div>--%>
         <div class="text">
-            Copyright © 2006-2026  <a href="http://www.shsxt.com">上海乐字节</a>  All Rights Reserved
+            Copyright © 2021-2022  CityChainofSupply  All Rights Reserved
         </div>
     </div>
 </div>
