@@ -94,8 +94,8 @@
 	*/
 	function checkLogin(){
 		//get username, password
-		var userName = $("userName").val();
-		var userPwd = $("userPwd").val();
+		var userName = $("#userName").val();
+		var userPwd = $("#userPwd").val();
 
 		//judge null
 		if(isEmpty(userName)){

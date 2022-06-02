@@ -30,6 +30,12 @@ public class UserService {
     private UserDao userDao = new UserDao();
     public ResultInfo<User> userLogin(String userName, String userPwd) {
         ResultInfo<User> resultInfo = new ResultInfo<>();
+        //登录回显：
+        User u = new User();
+        u.setUname(userName);
+        u.setUpwd(userPwd);
+        resultInfo.setResult(u);
+
         //1. judge arg == null
         if (StrUtil.isBlank(userName)||StrUtil.isBlank(userPwd)){
             //set state code == 0

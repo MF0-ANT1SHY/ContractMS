@@ -25,14 +25,14 @@
             <div class="box show">
                 <form action="user" method="post" id="loginForm">
                 <%-- 设置name属性值，用于form获取--%>
-                    <input type="text" class="user yahei16" id="userName" name="userName" value="" /><br /><br />
-                    <input type="password" class="pwd yahei16" id="userPwd"  name="userPwd" value=""/><br /><br />
+                    <input type="text" class="user yahei16" id="userName" name="userName" value="${resultInfo.result.uname}" /><br /><br />
+                    <input type="password" class="pwd yahei16" id="userPwd"  name="userPwd" value="${resultInfo.result.upwd}"/><br /><br />
                 <%-- 复选框 --%>
                     <input name="rem" type="checkbox" value="1"  class="inputcheckbox"/> <label>记住我</label>&nbsp; &nbsp;
                 <%--通过value值判断该提交的具体功能--%>
                     <input type="hidden" name="actionName" value="login">
                 <%-- 取后台传过来的值   --%>
-                    <span id="msg" style="color:red;font-size:12px"></span><br /><br />
+                    <span id="msg" style="color:red;font-size:12px">${resultInfo.msg}</span><br /><br />
                     <input type="button" class="log jc yahei16" value="Log in" onclick="checkLogin()" />&nbsp; &nbsp; &nbsp;
                     <input type="reset" value="Cancel" class="reg jc yahei18" />
                 </form>
