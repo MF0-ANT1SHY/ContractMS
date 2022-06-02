@@ -12,4 +12,8 @@ public class User {
     private String nick;
     private String head;
     private String mood;
+
+    public void setUserId(Integer userId){
+        this.userId=userId;
+    }
 }

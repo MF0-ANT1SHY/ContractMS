@@ -28,7 +28,7 @@
                     <input type="text" class="user yahei16" id="userName" name="userName" value="${resultInfo.result.uname}" /><br /><br />
                     <input type="password" class="pwd yahei16" id="userPwd"  name="userPwd" value="${resultInfo.result.upwd}"/><br /><br />
                 <%-- 复选框 --%>
-                    <input name="rem" type="checkbox" value="1"  class="inputcheckbox"/> <label>记住我</label>&nbsp; &nbsp;
+                    <input name="rem" type="checkbox" value="1"  class="inputcheckbox"/> <label>Remember me</label>&nbsp; &nbsp;
                 <%--通过value值判断该提交的具体功能--%>
                     <input type="hidden" name="actionName" value="login">
                 <%-- 取后台传过来的值   --%>
@@ -42,14 +42,7 @@
 </div>
 
 <div id="flash">
-    <div class="pos">
-        <a bgUrl="static/images/banner-bg1.jpg" id="flash1" style="display:block;"><img src="static/images/banner-pic1.jpg"></a>
-        <a bgUrl="static/images/banner-bg2.jpg" id="flash2"                       ><img src="static/images/banner-pic2.jpg"></a>
-    </div>
-    <div class="flash_bar">
-        <div class="dq" id="f1" onclick="changeflash(1)"></div>
-        <div class="no" id="f2" onclick="changeflash(2)"></div>
-    </div>
+    <img src="./static/images/banner-pic1.jpg" style="height: 700px;">
 </div>
 
 <!--bottom-->
