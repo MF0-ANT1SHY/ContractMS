@@ -6,6 +6,8 @@ import com.ccos.contract.util.DBUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
 通过用户名查找用户对象，返回用户对象
@@ -18,7 +20,20 @@ import java.sql.ResultSet;
 7、关闭资源
  */
 public class UserDao {
-    public User queryUserByName(String userName){
+    public User queryUserByName(String userName) {
+        // 1. 定义sql语句
+        String sql = "select * from tb_user where uname = ?";
+
+        // 2. 设置参数集合
+        List<Object> params = new ArrayList<>();
+        params.add(userName);
+
+        // 3. 调用BaseDao的查询方法
+        User user = (User) BaseDao.queryRow(sql, params, User.class);
+
+        return user;
+    }
+    public User queryUserByName01(String userName){
         User user= null;
         //获取数据库连接
         Connection connection = null;

@@ -127,7 +127,7 @@ public class BaseDao {
             7、将对应的javabean设置到集合中
         8、关闭资源
          */
-        List list = null;
+        List list = new ArrayList();
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -185,12 +185,12 @@ public class BaseDao {
     }
 
     //查询对象
-    public static Object queryRow(String sql, List<Object> params,Class cls){
-        List list = queryRows(sql,params,cls);
+    public static Object queryRow(String sql, List<Object> params, Class cls) {
+        List list = queryRows(sql, params, cls);
         Object object = null;
-
-        if(list!=null&&list.size()>0){
-            object=list.get(0);
+        // 如果集合不为空，则获取查询的第一条数据
+        if (list != null && list.size() > 0) {
+            object = list.get(0);
         }
 
         return object;
