@@ -11,6 +11,7 @@ import java.io.IOException;
 public class indexServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("menu_page","index");
         request.setAttribute("changePage","note/list.jsp");
         request.getRequestDispatcher("index.jsp").forward(request,response);
     }

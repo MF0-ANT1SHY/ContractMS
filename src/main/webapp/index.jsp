@@ -2,7 +2,7 @@
 <html lang="zh"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-    <!DOCTYPE html>6
+    <!DOCTYPE html>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ContractMS</title>
     <link href="static/css/note.css" rel="stylesheet">
@@ -45,7 +45,6 @@
                 <li <c:if test="${menu_page=='type'}">class="active"</c:if> ><a href="type?actionName=list"><i class="glyphicon glyphicon-list"></i>&nbsp;类别管理</a></li>
                 <li <c:if test="${menu_page=='user'}">class="active"</c:if> ><a href="user?actionName=userCenter"><i class="glyphicon glyphicon-user"></i>&nbsp;个人中心</a>
                 <li <c:if test="${menu_page=='report'}">class="active"</c:if> ><a href="report?actionName=info"><i class="glyphicon glyphicon-signal"></i>&nbsp;数据报表</a></li>
-
             </ul>
             <form class="navbar-form navbar-right" role="search" action="index">
                 <div class="form-group">
