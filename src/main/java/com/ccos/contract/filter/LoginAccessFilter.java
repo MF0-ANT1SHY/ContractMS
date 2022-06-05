@@ -4,6 +4,7 @@ import com.ccos.contract.po.User;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -61,6 +62,31 @@ public class LoginAccessFilter implements Filter {
             filterChain.doFilter(request,response);
             return;
         }
+
+    //免登录
+        Cookie[] cookies = request.getCookies();
+        //Cookie[]?
+        if (cookies!=null&&cookies.length>0){
+            //遍历cookies
+            for(Cookie cookie: cookies){
+                if ("user".equals(cookie.getName())){
+                    //4. 得到对应cookie的value
+                    String value = cookie.getValue();
+                    //split value
+                    String[] val = value.split("-");
+                    String userName = val[0];
+                    String userPwd = val[1];
+                    //sendReq to login
+                    String url = "user?actionName=login&userName="+userName+"&userPwd="+userPwd;
+                    request.getRequestDispatcher(url).forward(request,response);
+                    //return
+                    return;
+                }
+            }
+        }
+
+
+
 
         //拦截请求，跳转到登陆界面
         response.sendRedirect("login.jsp");
