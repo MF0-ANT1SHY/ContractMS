@@ -17,4 +17,22 @@ public class NoteTypeDao {
 
         return list;
     }
+
+    public long findNoteCountByTypeId(String typeId) {
+        String sql = "select count(1) from tb_note where typeId = ?";
+        List<Object> params = new ArrayList<>();
+        params.add(typeId);
+        //call BaseDao
+        long count = (long)BaseDao.findSingleValue(sql,params);
+        return count;
+    }
+
+    public int deleteTypeById(String typeId) {
+        String sql = "delete from tb_note_type where typeId = ?";
+        List<Object> params = new ArrayList<>();
+        params.add(typeId);
+
+        int row = BaseDao.executeUpdate(sql,params);
+        return row;
+    }
 }

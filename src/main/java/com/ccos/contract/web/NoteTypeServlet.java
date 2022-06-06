@@ -1,8 +1,11 @@
 package com.ccos.contract.web;
 
+import com.alibaba.fastjson.JSON;
 import com.ccos.contract.po.NoteType;
 import com.ccos.contract.po.User;
 import com.ccos.contract.service.NoteTypeService;
+import com.ccos.contract.util.JsonUtil;
+import com.ccos.contract.vo.ResultInfo;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @WebServlet("/type")
@@ -25,10 +29,22 @@ public class NoteTypeServlet extends HttpServlet {
         if ("list".equals(actionName)){
             //查询类型列表
             typeList(request,response);
+        } else if ("delete".equals(actionName)) {
+            deleteType(request,response);
         }
     }
 
- //查询类型列表
+    //删除类型
+    private void deleteType(HttpServletRequest request, HttpServletResponse response) {
+        //接受参数
+        String typeId = request.getParameter("typeId");
+        //call service
+        ResultInfo<NoteType> resultInfo = typeService.deleteType(typeId);
+        //将ResultInfo->Json
+        JsonUtil.toJson(response,resultInfo);
+    }
+
+    //查询类型列表
     private void typeList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //get user in session
         User user = (User) request.getSession().getAttribute("user");
