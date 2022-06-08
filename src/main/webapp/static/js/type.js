@@ -29,7 +29,7 @@ function deleteType(typeId){
 	// 弹出提示框询问用户是否确认删除
 	swal({
 		title: "",  // 标题
-		text: "<h3>您确认要删除该记录吗？</h3>", // 内容
+		text: "<h4>您确认要删除该记录吗？</h4>", // 内容
 		type: "warning", // 图标  error	 success	info  warning
 		showCancelButton: true,  // 是否显示取消按钮
 		confirmButtonColor: "orange", // 确认按钮的颜色

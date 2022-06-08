@@ -48,4 +48,41 @@ public class NoteTypeService {
 
         return resultInfo;
     }
+
+    public ResultInfo<Integer> addOrUpdate(String typeName, Integer userId, String typeId) {
+        ResultInfo<Integer> resultInfo = new ResultInfo<>();
+
+        if (StrUtil.isBlank(typeName)){
+            resultInfo.setCode(0);
+            resultInfo.setMsg("类型名称不可空");
+            return resultInfo;
+        }
+
+        //call Dao
+        Integer code = typeDao.checkTypeName(typeName,userId,typeId);
+        //judge code
+        if (code==0){
+            resultInfo.setCode(0);
+            resultInfo.setMsg("类型名称重复！");
+            return resultInfo;
+        }
+
+        //judge Id null?
+        Integer key = null;
+        if(StrUtil.isBlank(typeId)){
+            key = typeDao.addType(typeName,userId);
+        }else {
+            key = typeDao.updateType(typeName,typeId);
+        }
+
+        //check successful?
+        if (key>0){
+            resultInfo.setCode(1);
+            resultInfo.setResult(key);
+        }else{
+            resultInfo.setCode(0);
+            resultInfo.setMsg("更新失败!");
+        }
+        return resultInfo;
+    }
 }

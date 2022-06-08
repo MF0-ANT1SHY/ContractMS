@@ -109,6 +109,12 @@
       <scope>provided</scope>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/org.webjars.npm/monaco-editor -->
+    <dependency>
+      <groupId>org.webjars.npm</groupId>
+      <artifactId>monaco-editor</artifactId>
+      <version>0.33.0</version>
+    </dependency>
   </dependencies>
 
   <build>

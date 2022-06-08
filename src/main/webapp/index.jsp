@@ -41,7 +41,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li <c:if test="${menu_page=='index'}">class="active"</c:if> ><a href="index"><i class="glyphicon glyphicon-cloud"></i>&nbsp;主&nbsp;&nbsp;页</a></li>
-                <li <c:if test="${menu_page=='note'}">class="active"</c:if> ><a href="note?actionName=view"><i class="glyphicon glyphicon-pencil"></i>&nbsp;发表云记</a></li>
+                <li <c:if test="${menu_page=='note'}">class="active"</c:if> ><a href="note?actionName=view"><i class="glyphicon glyphicon-pencil"></i>&nbsp;编辑合约</a></li>
                 <li <c:if test="${menu_page=='type'}">class="active"</c:if> ><a href="type?actionName=list"><i class="glyphicon glyphicon-list"></i>&nbsp;类别管理</a></li>
                 <li <c:if test="${menu_page=='user'}">class="active"</c:if> ><a href="user?actionName=userCenter"><i class="glyphicon glyphicon-user"></i>&nbsp;个人中心</a>
                 <li <c:if test="${menu_page=='report'}">class="active"</c:if> ><a href="report?actionName=info"><i class="glyphicon glyphicon-signal"></i>&nbsp;数据报表</a></li>
@@ -72,33 +72,13 @@
             <div class="data_list">
                 <div class="data_list_title">
 					<span class="glyphicon glyphicon-calendar">
-					</span>&nbsp;云记日期
+					</span>&nbsp;合约日期
                 </div>
 
                 <div>
                     <ul class="nav nav-pills nav-stacked">
                         <c:forEach items="${dateInfo}" var="item">
                             <li><a href="index?actionName=searchDate&date=${item.groupName}">${item.groupName} <span class="badge">${item.noteCount}</span></a></li>
-                        </c:forEach>
-                    </ul>
-                </div>
-
-            </div>
-            <div class="data_list">
-                <div class="data_list_title">
-					<span class="glyphicon glyphicon-list-alt">
-					</span>&nbsp;云记类别
-                </div>
-
-                <div>
-                    <ul id="typeUl" class="nav nav-pills nav-stacked">
-                        <c:forEach items="${typeInfo}" var="item">
-                            <li id="li_${item.typeId}">
-                                <a href="index?actionName=searchType&typeId=${item.typeId}">
-                                    <span id="sp_${item.typeId}">${item.groupName}</span>
-                                    <span class="badge">${item.noteCount}</span>
-                                </a>
-                            </li>
                         </c:forEach>
                     </ul>
                 </div>

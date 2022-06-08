@@ -31,7 +31,20 @@ public class NoteTypeServlet extends HttpServlet {
             typeList(request,response);
         } else if ("delete".equals(actionName)) {
             deleteType(request,response);
+        } else if ("addOrUpdate".equals(actionName)){
+            //添加或修改
+            addOrUpdate(request,response);
         }
+    }
+
+    private void addOrUpdate(HttpServletRequest request, HttpServletResponse response) {
+        //添加或修改
+        String typeName = request.getParameter("typeName");
+        String typeId = request.getParameter("typeId");
+
+        User user = (User) request.getSession().getAttribute("user");
+        ResultInfo<Integer> resultInfo = typeService.addOrUpdate(typeName, user.getUserId(), typeId);
+        JsonUtil.toJson(response,resultInfo);
     }
 
     //删除类型
