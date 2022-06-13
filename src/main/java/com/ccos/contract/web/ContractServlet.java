@@ -1,5 +1,6 @@
 package com.ccos.contract.web;
 
+import cn.hutool.core.util.StrUtil;
 import com.ccos.contract.po.Contract;
 import com.ccos.contract.po.NoteType;
 import com.ccos.contract.po.User;
@@ -36,9 +37,19 @@ public class ContractServlet extends HttpServlet {
             //添加
             addOrUpdate(request,response);
         }else if ("detail".equals(actionName)){
-            //添加
+            //查看
             noteDetail(request,response);
+        }else if ("delete".equals(actionName)){
+            //删除
+            noteDelete(request,response);
         }
+    }
+
+    private void noteDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String noteId = request.getParameter("noteId");
+        Integer code = contractService.deleteContract(noteId);
+        response.getWriter().write(code+"");
+        response.getWriter().close();
     }
 
     //查询详情
@@ -56,20 +67,33 @@ public class ContractServlet extends HttpServlet {
         String title = request.getParameter("title");
         String content = request.getParameter("content");
 
+        String noteId = request.getParameter("noteId");
+
         //调用service层
-        ResultInfo<Contract> resultInfo = contractService.addOrUpdate(typeId,title,content);
+        ResultInfo<Contract> resultInfo = contractService.addOrUpdate(typeId,title,content, noteId);
 
         //judge
         if (resultInfo.getCode()==1){
             response.sendRedirect("index");
         } else{
             request.setAttribute("resultInfo",resultInfo);
-            request.getRequestDispatcher("note?actionName=view").forward(request,response);
+            String url = "note?actionName=view";
+            if (StrUtil.isBlank(noteId)){
+                url+="&noteId="+noteId;
+            }
+            request.getRequestDispatcher(url).forward(request,response);
         }
     }
 
     //进入合约编辑页面
     private void ContractView(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String noteId = request.getParameter("noteId");
+        Contract contract = contractService.findContractById(noteId);
+        request.setAttribute("noteInfo",contract);
+
+
+
         User user = (User) request.getSession().getAttribute("user");
         List<NoteType> typeList = new NoteTypeService().findTypeList(user.getUserId());
         request.setAttribute("typeList",typeList);

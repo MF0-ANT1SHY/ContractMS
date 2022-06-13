@@ -11,7 +11,7 @@ import java.util.List;
 public class ContractService {
     private ContractDao contractDao = new ContractDao();
 
-    public ResultInfo<Contract> addOrUpdate(String typeId, String title, String content) {
+    public ResultInfo<Contract> addOrUpdate(String typeId, String title, String content, String noteId) {
 
         ResultInfo<Contract> resultInfo = new ResultInfo<>();
 
@@ -36,6 +36,11 @@ public class ContractService {
         contract.setTitle(title);
         contract.setContent(content);
         contract.setTypeId(Integer.parseInt(typeId));
+
+        if(!StrUtil.isBlank(noteId)){
+            contract.setNoteId(Integer.parseInt(noteId));
+        }
+
         resultInfo.setResult(contract);
 
         int row = contractDao.addOrUpdate(contract);
@@ -95,5 +100,17 @@ public class ContractService {
         }
         Contract contract = contractDao.findContractById(noteId);
         return contract;
+    }
+
+    public Integer deleteContract(String noteId) {
+        if(StrUtil.isBlank(noteId)){
+            return 0;
+        }
+        int row = contractDao.deleteContractById(noteId);
+        if (row>0){
+            return 1;
+        }else {
+            return 0;
+        }
     }
 }

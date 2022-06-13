@@ -8,11 +8,18 @@ import java.util.List;
 
 public class ContractDao {
     public int addOrUpdate(Contract contract) {
-        String sql = "insert into tb_note (typeId, title, content, pubTime) values (?,?,?,now())";
+        String sql = "";
         List<Object> params = new ArrayList<>();
         params.add(contract.getTypeId());
         params.add(contract.getTitle());
         params.add(contract.getContent());
+
+        if (contract.getNoteId()==null){
+            sql = "insert into tb_note (typeId, title, content, pubTime) values (?,?,?,now())";
+        }else {
+            sql = "update tb_note set typeId = ?, title=?, content=? where noteId = ?";
+            params.add(contract.getNoteId());
+        }
 
         //调用BaseDao的更新方法
         int row = BaseDao.executeUpdate(sql,params);
@@ -51,7 +58,7 @@ public class ContractDao {
             params.add(title);
         }
 
-        sql+=" limit ?,?";
+        sql+=" order by pubTime desc limit ?,?";
         params.add(index);
         params.add(pageSize);
         // 调用BaseDao的查询方法
@@ -61,12 +68,21 @@ public class ContractDao {
     }
 
     public Contract findContractById(String noteId) {
-        String sql = "select noteId, title, content, pubTime,typeName from tb_note n inner join tb_note_type t on n.typeId=t.typeId where noteId = ?";
+        String sql = "select noteId, title, content, pubTime,typeName, n.typeId from tb_note n inner join tb_note_type t on n.typeId=t.typeId where noteId = ?";
         List<Object> params = new ArrayList<>();
         params.add(noteId);
 
         Contract contract = (Contract) BaseDao.queryRow(sql,params,Contract.class);
 
         return contract;
+    }
+
+    public int deleteContractById(String noteId) {
+        String sql = "delete from tb_note where noteId=?";
+        List<Object> params = new ArrayList<>();
+        params.add(noteId);
+
+        int row = BaseDao.executeUpdate(sql,params);
+        return row;
     }
 }
