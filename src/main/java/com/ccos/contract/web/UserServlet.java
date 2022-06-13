@@ -151,7 +151,7 @@ public class UserServlet extends HttpServlet {
                 response.addCookie(cookie);
             }
 //            jump to ReNavi Page;
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("index");
 
         }else {
             //fail

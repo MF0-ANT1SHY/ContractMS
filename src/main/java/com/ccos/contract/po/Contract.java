@@ -8,9 +8,11 @@ import java.util.Date;
 @Getter
 @Setter
 public class Contract {
-    private Integer contractId;
+    private Integer noteId;
     private String title;
     private String content;
     private Integer typeId;
     private Date pubTime;
+
+    private String typeName;
 }

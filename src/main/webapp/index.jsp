@@ -49,7 +49,7 @@
             <form class="navbar-form navbar-right" role="search" action="index">
                 <div class="form-group">
                     <input type="hidden" name="actionName" value="searchTitle">
-                    <input type="text" name="title" class="form-control" placeholder="搜索云记">
+                    <input type="text" name="title" class="form-control" placeholder="搜索合约">
                 </div>
                 <button type="submit" class="btn btn-default">查询</button>
             </form>
@@ -68,21 +68,6 @@
                 <%--从session中获取--%>
                 <div class="nick">${user.nick}</div>
                 <div class="mood">(${user.mood})</div>
-            </div>
-            <div class="data_list">
-                <div class="data_list_title">
-					<span class="glyphicon glyphicon-calendar">
-					</span>&nbsp;合约日期
-                </div>
-
-                <div>
-                    <ul class="nav nav-pills nav-stacked">
-                        <c:forEach items="${dateInfo}" var="item">
-                            <li><a href="index?actionName=searchDate&date=${item.groupName}">${item.groupName} <span class="badge">${item.noteCount}</span></a></li>
-                        </c:forEach>
-                    </ul>
-                </div>
-
             </div>
         </div>
     </div>
